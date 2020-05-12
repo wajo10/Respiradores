@@ -10,6 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
+global Modo,Frecuencia,VolumenTidal,Rate,PEEP,PMax
 
 class Ui_MenuRespirador(object):
     def setupUi(self, MenuRespirador):
@@ -34,8 +35,9 @@ class Ui_MenuRespirador(object):
         self.graficasLabel.setText("")
         self.graficasLabel.setObjectName("graficasLabel")
 
+        #Layout de los botones
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(90, 250, 595, 80))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 230, 595, 61))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -83,7 +85,7 @@ class Ui_MenuRespirador(object):
         self.rateButton.setSizePolicy(sizePolicy)
         self.rateButton.setObjectName("rateButton")
         self.horizontalLayout.addWidget(self.rateButton)
-        self.rateButton.clicked.connect(mostrarAdvertencia)  # accion al hacer click
+        self.rateButton.clicked.connect(clickRate)  # accion al hacer click
 
         #Boton PEEP
         self.PEEPButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
@@ -107,6 +109,110 @@ class Ui_MenuRespirador(object):
         self.horizontalLayout.addWidget(self.PmaxButton)
         self.PmaxButton.clicked.connect(clickPMax)  # accion al hacer click
 
+        # boton guardar
+        self.GuardarButton = QtWidgets.QPushButton(self.centralwidget)
+        self.GuardarButton.setGeometry(QtCore.QRect(650, 230, 141, 121))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.GuardarButton.setFont(font)
+        self.GuardarButton.setObjectName("GuardarButton")
+        self.GuardarButton.clicked.connect(clickGuardar)# accion al hacer click
+
+        # Layout de los labels
+        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(10, 300, 595, 51))
+        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+
+        # Label PEEP
+        self.labelPEEP = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelPEEP.setFont(font)
+        self.labelPEEP.setAutoFillBackground(True)
+        self.labelPEEP.setFrameShape(QtWidgets.QFrame.Panel)
+        self.labelPEEP.setText("")
+        self.labelPEEP.setObjectName("labelPEEP")
+        self.horizontalLayout_2.addWidget(self.labelPEEP)
+
+        # Label Volumen Tidal
+        self.labelVolT = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelVolT.setFont(font)
+        self.labelVolT.setAutoFillBackground(True)
+        self.labelVolT.setFrameShape(QtWidgets.QFrame.Panel)
+        self.labelVolT.setText("")
+        self.labelVolT.setObjectName("labelVolT")
+        self.horizontalLayout_2.addWidget(self.labelVolT)
+
+        # Label Frecuencia respiratoria
+        self.labelFR = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelFR.setFont(font)
+        self.labelFR.setAutoFillBackground(True)
+        self.labelFR.setFrameShape(QtWidgets.QFrame.Panel)
+        self.labelFR.setText("")
+        self.labelFR.setObjectName("labelFR")
+        self.horizontalLayout_2.addWidget(self.labelFR)
+
+        # label Modo
+        self.labelModo = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelModo.setFont(font)
+        self.labelModo.setAutoFillBackground(True)
+        self.labelModo.setFrameShape(QtWidgets.QFrame.Panel)
+        self.labelModo.setText("")
+        self.labelModo.setObjectName("labelModo")
+        self.horizontalLayout_2.addWidget(self.labelModo)
+
+        # label Rate
+        self.labelRate = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelRate.setFont(font)
+        self.labelRate.setAutoFillBackground(True)
+        self.labelRate.setFrameShape(QtWidgets.QFrame.Panel)
+        self.labelRate.setText("")
+        self.labelRate.setObjectName("labelRate")
+        self.horizontalLayout_2.addWidget(self.labelRate)
+
+        # label PMaxima
+        self.labelPMax = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelPMax.setFont(font)
+        self.labelPMax.setAutoFillBackground(True)
+        self.labelPMax.setFrameShape(QtWidgets.QFrame.Panel)
+        self.labelPMax.setText("")
+        self.labelPMax.setObjectName("labelPMax")
+        self.horizontalLayout_2.addWidget(self.labelPMax)
+
         MenuRespirador.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MenuRespirador)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
@@ -129,6 +235,7 @@ class Ui_MenuRespirador(object):
         self.rateButton.setText(_translate("MenuRespirador", "I:E"))
         self.PEEPButton.setText(_translate("MenuRespirador", "PEEP"))
         self.PmaxButton.setText(_translate("MenuRespirador", "Pmax"))
+        self.GuardarButton.setText(_translate("MenuRespirador", "Guardar Cambios"))
 
 def mostrarAdvertencia():
     msg = QMessageBox()
@@ -147,22 +254,29 @@ def clickAdvertencia(i):
         print("Se cancelo el cambio de rate")
 
 def clickModo():
-    print("Click en modo")
+    Modo = "automatico"
+    print(Modo)
 
 def clickFR():
-    print("Click FR")
-
+    Frecuencia = "5"
+    print(Frecuencia)
 def clickVT():
-    print("Click Volumen tidal")
+    VolumenTidal = "20"
+    print(VolumenTidal)
 
 def clickRate():
-    print("Click Rate")
+    Rate = "1:3"
+    print(Rate)
 
 def clickPEEP():
-    print("Click PEEP")
-
+    PEEP = "30"
+    print(PEEP)
 def clickPMax():
-    print("Click PMax")
+    PMax = "60 psi"
+    print(PMax)
+def clickGuardar():
+    print("Guardar")
+
 
 if __name__== "__main__":
     import sys
