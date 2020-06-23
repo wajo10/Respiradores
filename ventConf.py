@@ -10,6 +10,7 @@ PEEP = 0
 
 class Ui_ventConfWindow(object):
     def setupUi(self, ConfigWindow):
+
         ConfigWindow.setObjectName("ConfigWindow")
         ConfigWindow.resize(800, 450)
         ConfigWindow.setMinimumSize(QtCore.QSize(800, 450))
@@ -258,7 +259,7 @@ class Ui_ventConfWindow(object):
         self.aplicaCambiosButton = QtWidgets.QPushButton(self.centralwidget)
         self.aplicaCambiosButton.setGeometry(QtCore.QRect(270, 330, 111, 61))
         self.aplicaCambiosButton.setObjectName("aplicaCambiosButton")
-        self.aplicaCambiosButton.clicked.connect(lambda: mostrarAdvertencia())
+        self.aplicaCambiosButton.clicked.connect(lambda: mostrarAdvertencia(ConfigWindow))
 
         # Cancelar boton
         self.cancelarButton = QtWidgets.QPushButton(self.centralwidget)
@@ -276,68 +277,6 @@ class Ui_ventConfWindow(object):
         ConfigWindow.setStatusBar(self.statusbar)
         self.retranslateUi(ConfigWindow)
         QtCore.QMetaObject.connectSlotsByName(ConfigWindow)
-
-        # funcion para aumentar la variable deseada
-        # num: numero inicial de la variable
-        # variable: indica que variable global se desea modificar
-        def aumentar(num, variable):
-            global FRECUENCIA, RATE, VOL_T, PEEP, PMAX
-
-            if (variable == "FRECUENCIA"):
-                if (num >= 10 and num < 30):
-                    FRECUENCIA = num + 1
-                    ui.FrecuenciaLabel.setText("    "+ str(FRECUENCIA) + " resp/min")
-
-            elif (variable == "RATE"):
-                if (num >= 1 and num < 5):
-                    RATE = num + 1
-                    ui.RateLabel.setText("           1:"+ str(RATE))
-
-            elif (variable == "VOL_T"):
-                if (num >= 250 and num < 800):
-                    VOL_T = num + 50
-                    ui.VolTLabel.setText("        "+ str(VOL_T)+" mL")
-
-            elif (variable == "PEEP"):
-                if (num >= 0 and num < 25):
-                    PEEP = num + 1
-                    ui.PEEPLabel.setText("      "+ str(PEEP) + " cm H2O")
-
-            elif (variable == "PMAX"):
-                if (num >= 5 and num < 40):
-                    PMAX = num + 1
-                    ui.PMaxLabel.setText("      "+ str(PMAX) + " cm H2O")
-
-        # funcion para disminuir la variable deseada
-        # num: numero inicial de la variable
-        # variable: indica que variable global se desea modificar
-        def disminuir(num, variable):
-            global FRECUENCIA, RATE, VOL_T, PEEP, PMAX
-
-            if (variable == "FRECUENCIA"):
-                if (num > 10 and num <= 30):
-                    FRECUENCIA = num - 1
-                    ui.FrecuenciaLabel.setText("    " + str(FRECUENCIA) + " resp/min")
-
-            elif (variable == "RATE"):
-                if (num > 1 and num <= 5):
-                    RATE = num - 1
-                    ui.RateLabel.setText("           1:"+ str(RATE))
-
-            elif (variable == "VOL_T"):
-                if (num > 250 and num <= 800):
-                    VOL_T = num - 50
-                    ui.VolTLabel.setText("        "+ str(VOL_T)+" mL")
-
-            elif (variable == "PEEP"):
-                if (num > 0 and num <= 25):
-                    PEEP = num - 1
-                    ui.PEEPLabel.setText("      "+ str(PEEP) + " cm H2O")
-
-            elif (variable == "PMAX"):
-                if (num > 5 and num <= 40):
-                    PMAX = num - 1
-                    ui.PMaxLabel.setText("      "+ str(PMAX) + " cm H2O")
 
 
     def retranslateUi(self, ConfigWindow):
@@ -361,27 +300,90 @@ class Ui_ventConfWindow(object):
         self.label_2.setText(_translate("ConfigWindow", "Frecuencia             Vol T"))
         self.label_3.setText(_translate("ConfigWindow", "P Max                      PEEP"))
 
+# funcion para aumentar la variable deseada
+# num: numero inicial de la variable
+# variable: indica que variable global se desea modificar
+def aumentar(num, variable):
+    global FRECUENCIA, RATE, VOL_T, PEEP, PMAX
+
+    if (variable == "FRECUENCIA"):
+        if (num >= 10 and num < 30):
+            FRECUENCIA = num + 1
+            ui.FrecuenciaLabel.setText("    " + str(FRECUENCIA) + " resp/min")
+
+    elif (variable == "RATE"):
+        if (num >= 1 and num < 5):
+            RATE = num + 1
+            ui.RateLabel.setText("           1:" + str(RATE))
+
+    elif (variable == "VOL_T"):
+        if (num >= 250 and num < 800):
+            VOL_T = num + 50
+            ui.VolTLabel.setText("        " + str(VOL_T) + " mL")
+
+    elif (variable == "PEEP"):
+        if (num >= 0 and num < 25):
+            PEEP = num + 1
+            ui.PEEPLabel.setText("      " + str(PEEP) + " cm H2O")
+
+    elif (variable == "PMAX"):
+        if (num >= 5 and num < 40):
+            PMAX = num + 1
+            ui.PMaxLabel.setText("      " + str(PMAX) + " cm H2O")
+
+# funcion para disminuir la variable deseada
+# num: numero inicial de la variable
+# variable: indica que variable global se desea modificar
+def disminuir(num, variable):
+    global FRECUENCIA, RATE, VOL_T, PEEP, PMAX
+
+    if (variable == "FRECUENCIA"):
+        if (num > 10 and num <= 30):
+            FRECUENCIA = num - 1
+            ui.FrecuenciaLabel.setText("    " + str(FRECUENCIA) + " resp/min")
+
+    elif (variable == "RATE"):
+        if (num > 1 and num <= 5):
+            RATE = num - 1
+            ui.RateLabel.setText("           1:" + str(RATE))
+
+    elif (variable == "VOL_T"):
+        if (num > 250 and num <= 800):
+            VOL_T = num - 50
+            ui.VolTLabel.setText("        " + str(VOL_T) + " mL")
+
+    elif (variable == "PEEP"):
+        if (num > 0 and num <= 25):
+            PEEP = num - 1
+            ui.PEEPLabel.setText("      " + str(PEEP) + " cm H2O")
+
+    elif (variable == "PMAX"):
+        if (num > 5 and num <= 40):
+            PMAX = num - 1
+            ui.PMaxLabel.setText("      " + str(PMAX) + " cm H2O")
+
+# Cerrar la ventana de configuracion
+def cancelar(ConfigWindow):
+    ConfigWindow.close()
+
 #Mensaje de advertencia para
-def mostrarAdvertencia():
+def mostrarAdvertencia(ConfigWindow):
     msg = QMessageBox()
     msg.setWindowTitle("Advertencia")
     msg.setText("Esta seguro(a) que aplicar estos cambios?")
     msg.setIcon(QMessageBox.Warning)
     msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
     msg.setDefaultButton(QMessageBox.Cancel)
-    msg.buttonClicked.connect(clickAdvertencia)
+    msg.buttonClicked.connect(lambda: clickAdvertencia(ConfigWindow))
     x = msg.exec_()
 
-def cancelar(ventana):
-    ventana.close()
 
-
-def clickAdvertencia(i):
+def clickAdvertencia(i,ConfigWindow):
     if i.text() == "OK":
         print("Cambios aplicados")
+        ConfigWindow.close()
     elif i.text() == "Cancel":
         print("Los cambios no fueron aplicados")
-
 
 
 if __name__== "__main__":
