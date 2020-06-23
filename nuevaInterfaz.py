@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from ventConf import Ui_ventConfWindow
+from ventConf import *
 
 
 class Ui_MenuRespirador(object):
@@ -148,7 +148,6 @@ class Ui_MenuRespirador(object):
         self.labelPEEP.setObjectName("labelPEEP")
         self.gridLayout.addWidget(self.labelPEEP, 2, 1, 1, 1)
 
-
         MenuRespirador.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MenuRespirador)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
@@ -166,21 +165,12 @@ class Ui_MenuRespirador(object):
         MenuRespirador.setWindowTitle(_translate("MenuRespirador", "Control Respirador"))
         self.ConfigButton.setText(_translate("MenuRespirador", "Configuracion"))
         self.OnOffButton.setText(_translate("MenuRespirador", "On/Off"))
-        self.labelModo.setText(_translate("MenuRespirador", "Modo:\n"
-""))
-        self.labelFR.setText(_translate("MenuRespirador", "Frecuencia\n"
-"Respiratoria:\n"
-""))
-        self.labelVolT.setText(_translate("MenuRespirador", "Volumen\n"
-"Tidal:\n"
-""))
-        self.labelRate.setText(_translate("MenuRespirador", "Rate:\n"
-""))
-        self.labelPMax.setText(_translate("MenuRespirador", "Presion\n"
-"Maxima:\n"
-""))
-        self.labelPEEP.setText(_translate("MenuRespirador", "PEEP:\n"
-""))
+        self.labelModo.setText(_translate("MenuRespirador", "Modo:\n"""))
+        self.labelFR.setText(_translate("MenuRespirador", "Frecuencia\nRespiratoria:\n"))
+        self.labelVolT.setText(_translate("MenuRespirador", "Volumen\n""Tidal:\n"))
+        self.labelRate.setText(_translate("MenuRespirador", "Rate:\n"))
+        self.labelPMax.setText(_translate("MenuRespirador", "Presion\nMaxima:\n"))
+        self.labelPEEP.setText(_translate("MenuRespirador", "PEEP:\n"))
 
 
 if __name__== "__main__":

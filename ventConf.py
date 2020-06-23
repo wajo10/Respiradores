@@ -10,6 +10,11 @@ PEEP = 0
 
 class Ui_ventConfWindow(object):
     def setupUi(self, ConfigWindow):
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(19)
+        font.setBold(True)
+        font.setWeight(75)
 
         ConfigWindow.setObjectName("ConfigWindow")
         ConfigWindow.resize(800, 450)
@@ -52,45 +57,25 @@ class Ui_ventConfWindow(object):
         #modo anterior boton
         self.antModoButton = QtWidgets.QPushButton(self.centralwidget)
         self.antModoButton.setGeometry(QtCore.QRect(0, 30, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.antModoButton.setFont(font)
         self.antModoButton.setObjectName("antModoButton")
 
         # modo siguiente boton
         self.sigModoButton = QtWidgets.QPushButton(self.centralwidget)
         self.sigModoButton.setGeometry(QtCore.QRect(210, 30, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.sigModoButton.setFont(font)
         self.sigModoButton.setObjectName("sigModoButton")
 
         # - FR boton
         self.menosFRButton = QtWidgets.QPushButton(self.centralwidget)
         self.menosFRButton.setGeometry(QtCore.QRect(0, 140, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.menosFRButton.setFont(font)
         self.menosFRButton.setObjectName("menosFRButton")
-        self.menosFRButton.clicked.connect(lambda: disminuir(FRECUENCIA, "FRECUENCIA"))  # accion al tocar el boton
+        self.menosFRButton.clicked.connect(lambda: disminuir(FRECUENCIA,"FRECUENCIA"))  # accion al tocar el boton
 
         # + FR boton
         self.masFRButton = QtWidgets.QPushButton(self.centralwidget)
         self.masFRButton.setGeometry(QtCore.QRect(210, 140, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.masFRButton.setFont(font)
         self.masFRButton.setObjectName("masFRButton")
         self.masFRButton.clicked.connect(lambda: aumentar(FRECUENCIA,"FRECUENCIA")) #accion al tocar el boton
@@ -98,23 +83,13 @@ class Ui_ventConfWindow(object):
         # - PMax boton
         self.menosPMaxButton = QtWidgets.QPushButton(self.centralwidget)
         self.menosPMaxButton.setGeometry(QtCore.QRect(0, 250, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.menosPMaxButton.setFont(font)
         self.menosPMaxButton.setObjectName("menosPMaxButton")
-        self.menosPMaxButton.clicked.connect(lambda: disminuir(PMAX, "PMAX"))  # accion al tocar el boton
+        self.menosPMaxButton.clicked.connect(lambda: disminuir(PMAX,"PMAX"))  # accion al tocar el boton
 
         # + PMax boton
         self.masPMaxButton = QtWidgets.QPushButton(self.centralwidget)
         self.masPMaxButton.setGeometry(QtCore.QRect(210, 250, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.masPMaxButton.setFont(font)
         self.masPMaxButton.setObjectName("masPMaxButton")
         self.masPMaxButton.clicked.connect(lambda: aumentar(PMAX, "PMAX"))  # accion al tocar el boton
@@ -153,11 +128,6 @@ class Ui_ventConfWindow(object):
         # - Rate boton
         self.menosRateButton = QtWidgets.QPushButton(self.centralwidget)
         self.menosRateButton.setGeometry(QtCore.QRect(500, 30, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.menosRateButton.setFont(font)
         self.menosRateButton.setObjectName("menosRateButton")
         self.menosRateButton.clicked.connect(lambda: disminuir(RATE, "RATE"))  # accion al tocar el boton
@@ -165,11 +135,6 @@ class Ui_ventConfWindow(object):
         # + Rate boton
         self.masRateButton = QtWidgets.QPushButton(self.centralwidget)
         self.masRateButton.setGeometry(QtCore.QRect(720, 30, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.masRateButton.setFont(font)
         self.masRateButton.setObjectName("masRateButton")
         self.masRateButton.clicked.connect(lambda: aumentar(RATE, "RATE"))  # accion al tocar el boton
@@ -177,11 +142,6 @@ class Ui_ventConfWindow(object):
         # - Vol Tidal Boton
         self.menosVolTButton = QtWidgets.QPushButton(self.centralwidget)
         self.menosVolTButton.setGeometry(QtCore.QRect(500, 140, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.menosVolTButton.setFont(font)
         self.menosVolTButton.setObjectName("menosVolTButton")
         self.menosVolTButton.clicked.connect(lambda: disminuir(VOL_T, "VOL_T"))  # accion al tocar el boton
@@ -189,11 +149,6 @@ class Ui_ventConfWindow(object):
         # + Vol Tidal boton
         self.masVolTButton = QtWidgets.QPushButton(self.centralwidget)
         self.masVolTButton.setGeometry(QtCore.QRect(720, 140, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.masVolTButton.setFont(font)
         self.masVolTButton.setObjectName("masVolTButton")
         self.masVolTButton.clicked.connect(lambda: aumentar(VOL_T, "VOL_T"))  # accion al tocar el boton
@@ -201,11 +156,6 @@ class Ui_ventConfWindow(object):
         # - PEEP boton
         self.menosPEEPButton = QtWidgets.QPushButton(self.centralwidget)
         self.menosPEEPButton.setGeometry(QtCore.QRect(500, 250, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.menosPEEPButton.setFont(font)
         self.menosPEEPButton.setObjectName("menosPEEPButton")
         self.menosPEEPButton.clicked.connect(lambda: disminuir(PEEP, "PEEP"))  # accion al tocar el boton
@@ -213,11 +163,6 @@ class Ui_ventConfWindow(object):
         # + PEEP boton
         self.masPEEPButton = QtWidgets.QPushButton(self.centralwidget)
         self.masPEEPButton.setGeometry(QtCore.QRect(720, 250, 80, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
         self.masPEEPButton.setFont(font)
         self.masPEEPButton.setObjectName("masPEEPButton")
         self.masPEEPButton.clicked.connect(lambda: aumentar(PEEP, "PEEP"))  # accion al tocar el boton
@@ -225,10 +170,14 @@ class Ui_ventConfWindow(object):
         # Label titulo modo y rate
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(310, 30, 171, 70))
+
+        #Cambio fuente para labels
         font = QtGui.QFont()
         font.setFamily("Arial Black")
         font.setBold(True)
         font.setWeight(75)
+
+        # Label Modo y Rate
         self.label.setFont(font)
         self.label.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.label.setObjectName("label")
@@ -236,10 +185,6 @@ class Ui_ventConfWindow(object):
         # Label titulo Frecuencia y Vol T
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(310, 140, 171, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setBold(True)
-        font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.label_2.setObjectName("label_2")
@@ -247,10 +192,6 @@ class Ui_ventConfWindow(object):
         # Label titulo P.Max y PEEP
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(310, 250, 171, 70))
-        font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setBold(True)
-        font.setWeight(75)
         self.label_3.setFont(font)
         self.label_3.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.label_3.setObjectName("label_3")
@@ -259,13 +200,13 @@ class Ui_ventConfWindow(object):
         self.aplicaCambiosButton = QtWidgets.QPushButton(self.centralwidget)
         self.aplicaCambiosButton.setGeometry(QtCore.QRect(270, 330, 111, 61))
         self.aplicaCambiosButton.setObjectName("aplicaCambiosButton")
-        self.aplicaCambiosButton.clicked.connect(lambda: mostrarAdvertencia(ConfigWindow))
+        self.aplicaCambiosButton.clicked.connect(mostrarAdvertencia)
 
-        # Cancelar boton
-        self.cancelarButton = QtWidgets.QPushButton(self.centralwidget)
-        self.cancelarButton.setGeometry(QtCore.QRect(400, 330, 111, 61))
-        self.cancelarButton.setObjectName("cancelarButton")
-        self.cancelarButton.clicked.connect(lambda: cancelar(ConfigWindow))#accion al cancelar
+        # Cerrar boton
+        self.cerrarButton = QtWidgets.QPushButton(self.centralwidget)
+        self.cerrarButton.setGeometry(QtCore.QRect(400, 330, 111, 61))
+        self.cerrarButton.setObjectName("cerrarButton")
+        self.cerrarButton.clicked.connect(lambda: cerrar(ConfigWindow))#accion para cerrar la ventana
 
         ConfigWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(ConfigWindow)
@@ -295,7 +236,7 @@ class Ui_ventConfWindow(object):
         self.masRateButton.setText(_translate("ConfigWindow", "+"))
         self.masVolTButton.setText(_translate("ConfigWindow", "+"))
         self.aplicaCambiosButton.setText(_translate("ConfigWindow", "Aplicar Cambios"))
-        self.cancelarButton.setText(_translate("ConfigWindow", "Cancelar"))
+        self.cerrarButton.setText(_translate("ConfigWindow", "Cerrar"))
         self.label.setText(_translate("ConfigWindow", "Modo                        Rate"))
         self.label_2.setText(_translate("ConfigWindow", "Frecuencia             Vol T"))
         self.label_3.setText(_translate("ConfigWindow", "P Max                      PEEP"))
@@ -363,25 +304,30 @@ def disminuir(num, variable):
             ui.PMaxLabel.setText("      " + str(PMAX) + " cm H2O")
 
 # Cerrar la ventana de configuracion
-def cancelar(ConfigWindow):
+def cerrar(ConfigWindow):
     ConfigWindow.close()
 
 #Mensaje de advertencia para
-def mostrarAdvertencia(ConfigWindow):
+def mostrarAdvertencia():
     msg = QMessageBox()
     msg.setWindowTitle("Advertencia")
     msg.setText("Esta seguro(a) que aplicar estos cambios?")
     msg.setIcon(QMessageBox.Warning)
     msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
     msg.setDefaultButton(QMessageBox.Cancel)
-    msg.buttonClicked.connect(lambda: clickAdvertencia(ConfigWindow))
+    msg.buttonClicked.connect(clickAdvertencia)
     x = msg.exec_()
 
 
-def clickAdvertencia(i,ConfigWindow):
+def clickAdvertencia(i):
     if i.text() == "OK":
         print("Cambios aplicados")
-        ConfigWindow.close()
+        print("Frecuencia: " + str(FRECUENCIA))
+        print("P Max: " + str(PMAX))
+        print("PEEP: " + str(PEEP))
+        print("Vol Tidal: " + str(VOL_T))
+        print("RATE: 1:" + str(RATE))
+
     elif i.text() == "Cancel":
         print("Los cambios no fueron aplicados")
 
