@@ -71,28 +71,28 @@ class Ui_ventConfWindow(object):
         self.menosFRButton.setGeometry(QtCore.QRect(0, 140, 80, 70))
         self.menosFRButton.setFont(font)
         self.menosFRButton.setObjectName("menosFRButton")
-        self.menosFRButton.clicked.connect(lambda: disminuir(FRECUENCIA,"FRECUENCIA"))  # accion al tocar el boton
+        self.menosFRButton.clicked.connect(lambda: disminuir(FRECUENCIA,"FRECUENCIA",self))  # accion al tocar el boton
 
         # + FR boton
         self.masFRButton = QtWidgets.QPushButton(self.centralwidget)
         self.masFRButton.setGeometry(QtCore.QRect(210, 140, 80, 70))
         self.masFRButton.setFont(font)
         self.masFRButton.setObjectName("masFRButton")
-        self.masFRButton.clicked.connect(lambda: aumentar(FRECUENCIA,"FRECUENCIA")) #accion al tocar el boton
+        self.masFRButton.clicked.connect(lambda: aumentar(FRECUENCIA,"FRECUENCIA",self)) #accion al tocar el boton
 
         # - PMax boton
         self.menosPMaxButton = QtWidgets.QPushButton(self.centralwidget)
         self.menosPMaxButton.setGeometry(QtCore.QRect(0, 250, 80, 70))
         self.menosPMaxButton.setFont(font)
         self.menosPMaxButton.setObjectName("menosPMaxButton")
-        self.menosPMaxButton.clicked.connect(lambda: disminuir(PMAX,"PMAX"))  # accion al tocar el boton
+        self.menosPMaxButton.clicked.connect(lambda: disminuir(PMAX,"PMAX",self))  # accion al tocar el boton
 
         # + PMax boton
         self.masPMaxButton = QtWidgets.QPushButton(self.centralwidget)
         self.masPMaxButton.setGeometry(QtCore.QRect(210, 250, 80, 70))
         self.masPMaxButton.setFont(font)
         self.masPMaxButton.setObjectName("masPMaxButton")
-        self.masPMaxButton.clicked.connect(lambda: aumentar(PMAX, "PMAX"))  # accion al tocar el boton
+        self.masPMaxButton.clicked.connect(lambda: aumentar(PMAX, "PMAX",self))  # accion al tocar el boton
 
 
         #layout 2
@@ -130,42 +130,41 @@ class Ui_ventConfWindow(object):
         self.menosRateButton.setGeometry(QtCore.QRect(500, 30, 80, 70))
         self.menosRateButton.setFont(font)
         self.menosRateButton.setObjectName("menosRateButton")
-        self.menosRateButton.clicked.connect(lambda: disminuir(RATE, "RATE"))  # accion al tocar el boton
-
+        self.menosRateButton.clicked.connect(lambda: disminuir(RATE, "RATE",self))  # accion al tocar el boton
         # + Rate boton
         self.masRateButton = QtWidgets.QPushButton(self.centralwidget)
         self.masRateButton.setGeometry(QtCore.QRect(720, 30, 80, 70))
         self.masRateButton.setFont(font)
         self.masRateButton.setObjectName("masRateButton")
-        self.masRateButton.clicked.connect(lambda: aumentar(RATE, "RATE"))  # accion al tocar el boton
-
+        self.masRateButton.clicked.connect(lambda: aumentar(RATE, "RATE",self))  # accion al tocar el boton
+        self.masRateButton.clicked
         # - Vol Tidal Boton
         self.menosVolTButton = QtWidgets.QPushButton(self.centralwidget)
         self.menosVolTButton.setGeometry(QtCore.QRect(500, 140, 80, 70))
         self.menosVolTButton.setFont(font)
         self.menosVolTButton.setObjectName("menosVolTButton")
-        self.menosVolTButton.clicked.connect(lambda: disminuir(VOL_T, "VOL_T"))  # accion al tocar el boton
+        self.menosVolTButton.clicked.connect(lambda: disminuir(VOL_T, "VOL_T",self))  # accion al tocar el boton
 
         # + Vol Tidal boton
         self.masVolTButton = QtWidgets.QPushButton(self.centralwidget)
         self.masVolTButton.setGeometry(QtCore.QRect(720, 140, 80, 70))
         self.masVolTButton.setFont(font)
         self.masVolTButton.setObjectName("masVolTButton")
-        self.masVolTButton.clicked.connect(lambda: aumentar(VOL_T, "VOL_T"))  # accion al tocar el boton
+        self.masVolTButton.clicked.connect(lambda: aumentar(VOL_T, "VOL_T",self))  # accion al tocar el boton
 
         # - PEEP boton
         self.menosPEEPButton = QtWidgets.QPushButton(self.centralwidget)
         self.menosPEEPButton.setGeometry(QtCore.QRect(500, 250, 80, 70))
         self.menosPEEPButton.setFont(font)
         self.menosPEEPButton.setObjectName("menosPEEPButton")
-        self.menosPEEPButton.clicked.connect(lambda: disminuir(PEEP, "PEEP"))  # accion al tocar el boton
+        self.menosPEEPButton.clicked.connect(lambda: disminuir(PEEP, "PEEP",self))  # accion al tocar el boton
 
         # + PEEP boton
         self.masPEEPButton = QtWidgets.QPushButton(self.centralwidget)
         self.masPEEPButton.setGeometry(QtCore.QRect(720, 250, 80, 70))
         self.masPEEPButton.setFont(font)
         self.masPEEPButton.setObjectName("masPEEPButton")
-        self.masPEEPButton.clicked.connect(lambda: aumentar(PEEP, "PEEP"))  # accion al tocar el boton
+        self.masPEEPButton.clicked.connect(lambda: aumentar(PEEP, "PEEP",self))  # accion al tocar el boton
 
         # Label titulo modo y rate
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -244,9 +243,8 @@ class Ui_ventConfWindow(object):
 # funcion para aumentar la variable deseada
 # num: numero inicial de la variable
 # variable: indica que variable global se desea modificar
-def aumentar(num, variable):
+def aumentar(num, variable,ui):
     global FRECUENCIA, RATE, VOL_T, PEEP, PMAX
-
     if (variable == "FRECUENCIA"):
         if (num >= 10 and num < 30):
             FRECUENCIA = num + 1
@@ -275,7 +273,7 @@ def aumentar(num, variable):
 # funcion para disminuir la variable deseada
 # num: numero inicial de la variable
 # variable: indica que variable global se desea modificar
-def disminuir(num, variable):
+def disminuir(num, variable,ui):
     global FRECUENCIA, RATE, VOL_T, PEEP, PMAX
 
     if (variable == "FRECUENCIA"):
