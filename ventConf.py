@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
-MODO = "Volumen"
+MODO = 0
 RATE = 1
 FRECUENCIA = 10
 VOL_T = 250
@@ -36,7 +36,7 @@ class Ui_ventConfWindow(object):
         #Label Modo
         self.ModoLabel = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.ModoLabel.setFrameShape(QtWidgets.QFrame.Box)
-        self.ModoLabel.setText("        "+ MODO)
+        self.ModoLabel.setText("      "+ "Volumen")
         self.ModoLabel.setObjectName("ModoLabel")
         self.verticalLayout.addWidget(self.ModoLabel)
 
@@ -59,12 +59,14 @@ class Ui_ventConfWindow(object):
         self.antModoButton.setGeometry(QtCore.QRect(0, 30, 80, 70))
         self.antModoButton.setFont(font)
         self.antModoButton.setObjectName("antModoButton")
+        self.antModoButton.clicked.connect(lambda: disminuir(MODO, "MODO",self))  # accion al tocar el boton
 
         # modo siguiente boton
         self.sigModoButton = QtWidgets.QPushButton(self.centralwidget)
         self.sigModoButton.setGeometry(QtCore.QRect(210, 30, 80, 70))
         self.sigModoButton.setFont(font)
         self.sigModoButton.setObjectName("sigModoButton")
+        self.sigModoButton.clicked.connect(lambda: aumentar(MODO, "MODO",self))  # accion al tocar el boton
 
         # - FR boton
         self.menosFRButton = QtWidgets.QPushButton(self.centralwidget)
@@ -244,11 +246,16 @@ class Ui_ventConfWindow(object):
 # num: numero inicial de la variable
 # variable: indica que variable global se desea modificar
 def aumentar(num, variable,ui):
-    global FRECUENCIA, RATE, VOL_T, PEEP, PMAX
+    global FRECUENCIA, RATE, VOL_T, PEEP, PMAX, MODO
     if (variable == "FRECUENCIA"):
         if (num >= 10 and num < 30):
             FRECUENCIA = num + 1
             ui.FrecuenciaLabel.setText("    " + str(FRECUENCIA) + " resp/min")
+
+    elif (variable == "MODO"):
+        if (num == 0):
+            MODO = 1
+            ui.ModoLabel.setText("      Presion")
 
     elif (variable == "RATE"):
         if (num >= 1 and num < 5):
@@ -274,12 +281,17 @@ def aumentar(num, variable,ui):
 # num: numero inicial de la variable
 # variable: indica que variable global se desea modificar
 def disminuir(num, variable,ui):
-    global FRECUENCIA, RATE, VOL_T, PEEP, PMAX
+    global FRECUENCIA, RATE, VOL_T, PEEP, PMAX,MODO
 
     if (variable == "FRECUENCIA"):
         if (num > 10 and num <= 30):
             FRECUENCIA = num - 1
             ui.FrecuenciaLabel.setText("    " + str(FRECUENCIA) + " resp/min")
+
+    elif (variable == "MODO"):
+        if (num == 1):
+            MODO = 0
+            ui.ModoLabel.setText("      Volumen")
 
     elif (variable == "RATE"):
         if (num > 1 and num <= 5):
@@ -325,6 +337,11 @@ def clickAdvertencia(i):
         print("PEEP: " + str(PEEP))
         print("Vol Tidal: " + str(VOL_T))
         print("RATE: 1:" + str(RATE))
+        if(MODO == 0):
+            print("Modo: Volumen")
+        else:
+            print("Modo: Presion")
+
 
     elif i.text() == "Cancel":
         print("Los cambios no fueron aplicados")
@@ -334,7 +351,5 @@ if __name__== "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     ConfigWindow = QtWidgets.QMainWindow()
-    ui = Ui_ventConfWindow()
-    ui.setupUi(ConfigWindow)
     ConfigWindow.show()
     sys.exit(app.exec_())

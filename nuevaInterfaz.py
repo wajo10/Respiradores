@@ -2,11 +2,6 @@ from ventConf import *
 
 
 class Ui_MenuRespirador(object):
-    frecuencia = 10
-    def prueba(self):
-        frecuencia = 10
-        self.labelFR.setText("Frecuencia\nRespiratoria:\n\n       "+str(frecuencia))
-
 
     def ventanaConfiguracion(self):
         self.ventanaConfig = QtWidgets.QMainWindow()
@@ -59,7 +54,7 @@ class Ui_MenuRespirador(object):
         font.setWeight(75)
         self.OnOffButton.setFont(font)
         self.OnOffButton.setObjectName("OnOffButton")
-        self.OnOffButton.clicked.connect(self.prueba)
+        # self.OnOffButton.clicked.connect(self.prueba)
 
         #layout de labels
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
