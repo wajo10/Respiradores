@@ -1,13 +1,49 @@
 from ventConf import *
 
+Encendido = False
+MODO = 0
+RATE = 1
+FRECUENCIA = 10
+VOL_T = 250
+PMAX = 5
+PEEP = 0
 
 class Ui_MenuRespirador(object):
 
     def ventanaConfiguracion(self):
-        self.ventanaConfig = QtWidgets.QMainWindow()
-        self.ui = Ui_ventConfWindow()
-        self.ui.setupUi(self.ventanaConfig)
-        self.ventanaConfig.show()
+        global Encendido, MODO, RATE, FRECUENCIA, VOL_T, PMAX, PEEP
+        if (Encendido):
+            self.ventanaConfig = QtWidgets.QMainWindow()
+            self.ui = Ui_ventConfWindow()
+            self.ui.setupUi(self.ventanaConfig)
+            self.ventanaConfig.show()
+        else:
+            errorConfig(self)
+
+    def encender_apagar(self):
+        global Encendido, MODO, RATE, FRECUENCIA, VOL_T, PMAX, PEEP
+        if (Encendido == False):
+            Encendido = True
+            if (MODO == 0):
+                self.labelModo.setText("Modo:\nVolumen")
+            else:
+                self.labelModo.setText("Modo:\n" + "Presion")
+            self.labelFR.setText("Frecuencia\nRespiratoria:\n" + str(FRECUENCIA))
+            self.labelVolT.setText("Volumen\n""Tidal:\n" + str(VOL_T))
+            self.labelRate.setText("Rate:\n1:" + str(RATE))
+            self.labelPMax.setText("Presion\nMaxima:\n" + str(PMAX))
+            self.labelPEEP.setText("PEEP:\n" + str(PEEP))
+
+        else:
+            Encendido = False
+            self.labelModo.setText("Modo:\n")
+            self.labelFR.setText("Frecuencia\nRespiratoria:\n")
+            self.labelVolT.setText("Volumen\n""Tidal:\n")
+            self.labelRate.setText("Rate:\n")
+            self.labelPMax.setText("Presion\nMaxima:\n")
+            self.labelPEEP.setText("PEEP:\n")
+
+
 
     def setupUi(self, MenuRespirador):
         #dimensiones ventana principal
@@ -54,7 +90,7 @@ class Ui_MenuRespirador(object):
         font.setWeight(75)
         self.OnOffButton.setFont(font)
         self.OnOffButton.setObjectName("OnOffButton")
-        # self.OnOffButton.clicked.connect(self.prueba)
+        self.OnOffButton.clicked.connect(self.encender_apagar)
 
         #layout de labels
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -166,6 +202,13 @@ class Ui_MenuRespirador(object):
         self.labelPMax.setText(_translate("MenuRespirador", "Presion\nMaxima:\n"))
         self.labelPEEP.setText(_translate("MenuRespirador", "PEEP:\n"))
 
+def errorConfig(self):
+    msg = QMessageBox()
+    msg.setWindowTitle("Error")
+    msg.setText("Debe encender el respirador antes de configurar los valores inciales")
+    msg.setIcon(QMessageBox.Critical)
+    msg.setStandardButtons(QMessageBox.Ok)
+    msg.exec_()
 
 if __name__== "__main__":
     import sys

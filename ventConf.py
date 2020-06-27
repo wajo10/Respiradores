@@ -326,7 +326,7 @@ def mostrarAdvertencia():
     msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
     msg.setDefaultButton(QMessageBox.Cancel)
     msg.buttonClicked.connect(clickAdvertencia)
-    x = msg.exec_()
+    msg.exec_()
 
 
 def clickAdvertencia(i):
